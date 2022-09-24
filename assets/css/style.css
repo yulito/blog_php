@@ -1,0 +1,213 @@
+/*FUENTES*/
+@font-face{
+    font-family: 'Roboto',sans-serif;
+    src: url(../fonts/fuente.woff2) format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+    font-family: 'Dancing Script';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(../fonts/fuente2.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+/* -------------------------------------------------------------------------------------- */
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    font-family: 'Roboto',sans-serif;
+}
+h1,h2{
+    font-family: 'Dancing Script', cursive;
+}
+img{
+    height: 200px;
+    width: 460;
+    margin-left: 22%;
+}
+/* ----------------------- GRID ÁREA ------------------------- */
+.header{
+    grid-area: header;    
+}
+.menu{
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    justify-content:space-between;
+    align-items: center; 
+
+    background-color: #000;
+    border-radius: 6px;
+    box-shadow: 2px 2px 2px 2px rgb(39, 39, 39);
+
+    font-size: 20px;    
+}
+.menu-item li{
+    display: inline-block;
+    padding-left: 4px;
+    padding-right: 4px;
+    height: 60px;
+    line-height: 60px;  
+    transition: .6s ease;    
+}
+.menu-item li a{
+    color: beige;
+}
+.menu-item select{
+    border-style: none;
+    background-color: #000;
+    color: beige;
+    font-size: 20px;
+}
+.seleccion{
+    padding-right: 10%;
+}
+.categoria,.perfil{
+    border-style: none;
+    height: 60px;
+    line-height: 60px;  
+    transition: .6s ease; 
+}
+.perfil:hover{
+    background-color: rgb(91, 91, 91);
+    color: beige;
+    border-radius: 6px;
+}
+.menu-item li:hover{
+    background-color: rgb(91, 91, 91);
+    border-radius: 6px;
+}
+.menu-item select:hover{
+    background-color: rgb(91, 91, 91);
+    color: beige;
+    border-radius: 6px;
+}
+
+.main{
+    grid-area:main;
+    background-color: #F2F2F2;
+    border:1px solid #000;
+    border-radius: 6px;
+    box-shadow: 2px 2px 2px 2px rgb(39, 39, 39);
+    padding: 10px;
+    text-align: center;
+
+}
+.publicacion{
+    margin: 10px;
+    padding: 10px;
+    
+}
+.publicacion:hover{
+    outline:1px solid #000;
+    border-radius: 6px;
+    background-color: gray;
+    box-shadow: 2px 2px 2px 2px rgb(39, 39, 39);
+}
+.publicacion a{
+    color:#000;
+}
+#titulo{    
+    font-size: 24px;
+    color: #8758FF;
+    text-shadow: 1px 1px 1px  #000;
+}
+#texto{
+    padding-top: 10px;
+    text-align: left;
+}
+.section{
+    padding: 10px;
+
+    grid-area:section;
+    background-color: #73c3e8;
+    border:1px solid #000;
+    border-radius: 6px;
+    box-shadow: 2px 2px 2px 2px rgb(39, 39, 39);
+
+    min-width: 240px;
+}
+.section input{
+    margin-bottom: 10px;
+    height: 32px;
+    width: 100%;
+    border-radius: 6px;
+}
+#btn-login{
+    background-color: #8758FF;
+}
+.footer{    
+    grid-area:footer;
+    background-color: #8758FF;
+    border:1px solid #000;
+    border-radius: 6px;
+    box-shadow: 2px 2px 2px 2px rgb(39, 39, 39);
+
+    padding-top: 30px;
+    text-align: center;    
+}
+h4{
+    font-size: 14px;
+}
+
+/* -------------- DIMENSIONES PARA SMARTPHONE --------------- */
+body{    
+    padding: 20px;
+    height: 100vh;
+
+    display: grid;
+    gap:10px; 
+
+    grid-template: 
+    "header"       auto
+    "main"         auto
+    "section"      auto
+    "footer"       80px
+    ;
+}
+
+/* ---------------- DIMENSIONES PARA DESKTOP --------------- */
+@media (min-width: 800px){
+    body{
+        grid-template: 
+        "header  header"    auto
+        "main   section"    auto /* luego cambiar a auto */
+        "footer  footer"    80px /
+        3fr      1fr
+        ;
+    }
+    h1{     
+        font-size: 3rem;
+        
+    }
+    img{
+        height: 220px;
+        width: 500;
+        margin-left: 30%;
+    }
+    h2{        
+        font-size: 2rem;
+    }    
+    .menu{
+        font-size: 24px;
+    }
+    .menu-item li{
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .menu-item select{
+        font-size: 24px;
+    }
+    h4{
+        font-size: 20px;
+    }
+}
