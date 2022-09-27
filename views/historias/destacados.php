@@ -1,8 +1,10 @@
 <h2>Historias destacadas</h2>
 
+<?php while($stories = $historias->fetch_object()): ?>   
+    <!-- Al usar fetch_object utilizamos $var->nombre_atributo_db  -->
     <div class="publicacion">
         <a href="#">
-            <label for="titulo" id="titulo"><strong>Titulo</strong></label>
+            <label for="titulo" id="titulo"><strong><?= $stories->titulo?></strong></label>
             
             <div id="texto">
                 <ol>
@@ -11,10 +13,9 @@
                 </ol>
                 <br>
                 <p>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt aliquid eaque 
-                    possimus, inventore recusandae non tenetur odit assumenda, excepturi amet, magni 
-                    culpa! Perspiciatis tempora dignissimos magni nesciunt, suscipit amet sequi!...
+                   <?=$stories->_publicacion ?> 
                 </p>    
             </div>
         </a>
     </div>
+<?php endwhile; ?>

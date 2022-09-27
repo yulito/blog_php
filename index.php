@@ -1,30 +1,43 @@
 <?php
     session_start();
+    require_once 'autoload.php';
+    require_once 'config/db.php';
+    require_once 'config/parameters.php';
+    // require_once 'helpers/utils.php';
     require_once "views/layout/header.php";
-?>
-<!--- Luego sacamos el main de aca y lo ponemos en destacados.php, en su lugar iran los controladores principales--->
-<h2>Historias destacadas</h2>
 
-    <div class="publicacion">
-        <a href="#">
-            <label for="titulo" id="titulo"><strong>Titulo</strong></label>
-            
-            <div id="texto">
-                <ol>
-                    <li>Categoria: <strong>Comedia</strong></li>
-                    <li>Publicado por: <strong>yulito</strong> | fecha <strong>03/06/2022</strong></li>                
-                </ol>
-                <br>
-                <p>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt aliquid eaque 
-                    possimus, inventore recusandae non tenetur odit assumenda, excepturi amet, magni 
-                    culpa! Perspiciatis tempora dignissimos magni nesciunt, suscipit amet sequi!...
-                </p>    
-            </div>
-        </a>
-    </div>
+    function show_error(){
+        $error = new errorController();
+        $error->index();
+    }
+    
+    if(isset($_GET['controller'])){
+        $nombre_controlador = $_GET['controller'].'Controller';
+    
+    }elseif(!isset($_GET['controller']) && !isset($_GET['action'])){
+        $nombre_controlador = controller_default;
+        
+    }else{
+        show_error();
+        exit();
+    }
+    
+    if(class_exists($nombre_controlador)){	
+        $controlador = new $nombre_controlador();
+        
+        if(isset($_GET['action']) && method_exists($controlador, $_GET['action'])){
+            $action = $_GET['action'];
+            $controlador->$action();
+        }elseif(!isset($_GET['controller']) && !isset($_GET['action'])){
+            $action_default = action_default;
+            $controlador->$action_default();
+        }else{
+            show_error();
+        }
+    }else{
+        show_error();
+    }
 
-<?php
     require_once "views/layout/section.php";
     require_once "views/layout/footer.php";
 ?>
