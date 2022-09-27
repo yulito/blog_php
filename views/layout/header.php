@@ -7,8 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cuéntanos tu Historia</title>
-    <link rel="shortcut icon" href="CTH.ico" type="image/x-icon">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="shortcut icon" href="<?=base_url?>CTH.ico" type="image/x-icon">
+    <link rel="stylesheet" href="<?=base_url?>assets/css/style.css">
 </head>
 <body>    
     <!--------------------------------------------------------------->
@@ -16,11 +16,11 @@
 
         <div class="portada header-item">
             <h1> Cuéntanos tu historia... </h1>
-            <img id="logo" src="assets/image/jo.png" alt="logo" target="logo">
+            <img id="logo" src="<?=base_url?>assets/image/jo.png" alt="logo" target="logo">
         </div>                
         <nav class="menu header-item">
             <ul class="menu-item">
-                <li><a href="#">Inicio</a></li>
+                <li><a href="<?=base_url?>index.php">Inicio</a></li>
                 <li><a href="#">Acerca de</a></li>
                 <li><a href="#">Registrate</a></li>
                 <li>

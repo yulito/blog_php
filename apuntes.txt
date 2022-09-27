@@ -1,0 +1,67 @@
+ /* //VALIDAR CONTROLLER
+    if(isset($_GET['controller'])){
+        $nombre_controlador = $_GET['controller'].'Controller';
+    
+    }elseif(!isset($_GET['controller']) && !isset($_GET['action'])){
+        $nombre_controlador = controller_default;
+        
+    }else{
+        $nombre_controlador = controller_default;
+    }
+    
+    //VALIDAR ACTION
+    if(class_exists($nombre_controlador)){	
+
+        $controlador = new $nombre_controlador();
+        
+        if(isset($_GET['action']) && method_exists($controlador, $_GET['action'])){
+            $action = $_GET['action'];
+            $controlador->$action();
+
+        }elseif(!isset($_GET['controller']) && !isset($_GET['action'])){
+            $action_default = action_default;
+            $controlador->$action_default();
+        }elseif(isset($_GET['controller']) && !isset($_GET['action'])){
+            
+            $action_error = action_error;
+            $controlador->$action_error();
+        }
+    }else{
+        
+        $action_error = action_error;
+        $controlador->$action_error();
+    } */
+
+    0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+    //VALIDAR CONTROLLER
+    if(isset($_GET['controller'])){
+        $nombre_controlador = $_GET['controller'].'Controller';
+    
+    }elseif(!isset($_GET['controller'])){
+        $nombre_controlador = controller_default;
+        
+    }else{
+        $nombre_controlador = controller_default;
+    }
+    
+    //VALIDAR ACTION
+    if(class_exists($nombre_controlador)){	
+
+        $controlador = new $nombre_controlador();
+        
+        if(isset($_GET['action']) && method_exists($controlador, $_GET['action'])){
+            $action = $_GET['action'];
+            
+        }elseif(isset($_GET['action']) && !method_exists($controlador, $_GET['action'])){
+            $action = action_error;
+ 
+        }else{
+            $action = action_default;
+        }
+    }else{
+        $nombre_controlador = controller_default;
+        $action = action_error;
+    }
+    $controlador = new $nombre_controlador();
+    $controlador->$action();

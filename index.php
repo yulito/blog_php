@@ -6,37 +6,37 @@
     // require_once 'helpers/utils.php';
     require_once "views/layout/header.php";
 
-    function show_error(){
-        $error = new errorController();
-        $error->index();
-    }
-    
+    //VALIDAR CONTROLLER
     if(isset($_GET['controller'])){
         $nombre_controlador = $_GET['controller'].'Controller';
     
-    }elseif(!isset($_GET['controller']) && !isset($_GET['action'])){
+    }elseif(!isset($_GET['controller'])){
         $nombre_controlador = controller_default;
         
     }else{
-        show_error();
-        exit();
+        $nombre_controlador = controller_default;
     }
     
+    //VALIDAR ACTION
     if(class_exists($nombre_controlador)){	
+
         $controlador = new $nombre_controlador();
         
         if(isset($_GET['action']) && method_exists($controlador, $_GET['action'])){
             $action = $_GET['action'];
-            $controlador->$action();
-        }elseif(!isset($_GET['controller']) && !isset($_GET['action'])){
-            $action_default = action_default;
-            $controlador->$action_default();
+            
+        }elseif(isset($_GET['action']) && !method_exists($controlador, $_GET['action'])){
+            $action = action_error;
+ 
         }else{
-            show_error();
+            $action = action_default;
         }
     }else{
-        show_error();
+        $nombre_controlador = controller_default;
+        $action = action_error;
     }
+    $controlador = new $nombre_controlador();
+    $controlador->$action();
 
     require_once "views/layout/section.php";
     require_once "views/layout/footer.php";
