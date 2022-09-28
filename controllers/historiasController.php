@@ -7,7 +7,7 @@ class historiasController{
 
         $historia = new Historias();
 
-        $historias = $historia->getAll();        
+        $historias = $historia->getAll(true);        
 
         require_once 'views/historias/destacados.php';
     }

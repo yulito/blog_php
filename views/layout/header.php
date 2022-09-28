@@ -20,14 +20,20 @@
         </div>                
         <nav class="menu header-item">
             <ul class="menu-item">
-                <li><a href="<?=base_url?>index.php">Inicio</a></li>
-                <li><a href="#">Acerca de</a></li>
+                <li><a href="<?=base_url?>">Inicio</a></li>
+                <li><a href="<?=base_url?>info/acerca">Acerca de</a></li>
                 <li><a href="#">Registrate</a></li>
                 <li>
                     <select class="categoria" id="categoria">
+
                         <option selected disabled>Categoria</option>
-                        <option><a href="#">Drama</a></option>
-                        <option><a href="#">Poliamor</a></option>
+
+                        <?php $categorias = Utils::showCategories(); ?>
+                        
+                        <?php while($cat = $categorias->fetch_object()): ?>
+                            <option><a href="#"><?=$cat->_cat ?></a></option>
+                        <?php endwhile; ?> 
+
                     </select>
                 </li>
             </ul>

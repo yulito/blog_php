@@ -13,7 +13,7 @@
                 </ol>
                 <br>
                 <p>
-                   <?=$htrs->_publicacion ?> 
+                   <?=substr($htrs->_publicacion,0,60) ?> ...
                 </p>    
             </div>
         </a>

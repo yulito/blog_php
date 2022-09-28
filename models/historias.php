@@ -65,19 +65,31 @@ class Historias {
     }
 
     //Queries functions
-    public function getAll() {
-        $publicaciones = $this->db->query("SELECT 
-                                            id_publicacion, 
-                                            titulo, 
-                                            _publicacion, 
-                                            fecha, 
-                                            estado_p, 
-                                            _cat, 
-                                            _usuario 
-                                            FROM publicacion INNER JOIN categoria USING(id_cat) 
-                                            INNER JOIN usuario USING(id_usuario) 
-                                            WHERE estado_p = 'Activado'
-                                            ORDER BY id_publicacion DESC");
+    public function getAll($limit=null, $cat=null) {
+        $sql="SELECT 
+                id_publicacion, 
+                titulo, 
+                _publicacion, 
+                fecha, 
+                estado_p,
+                id_cat, 
+                _cat, 
+                _usuario 
+                    FROM publicacion INNER JOIN categoria USING(id_cat) 
+                    INNER JOIN usuario USING(id_usuario) 
+                    WHERE estado_p = 'Activado'";
+
+        if(!empty($cat)) {
+            $sql .= " WHERE id_cat = '$cat'";  //pendiente
+        }
+
+        $sql .=" ORDER BY id_publicacion DESC";
+
+        if($limit == true) {
+            $sql .=" LIMIT 2";
+        }
+
+        $publicaciones = $this->db->query($sql);
         return $publicaciones;
     }
 
@@ -92,4 +104,6 @@ class Historias {
                                             WHERE id_publicacion = {$this->getIdHistoria()}");
 		return $publicacion->fetch_object();
     }
+
+    
 }
