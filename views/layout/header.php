@@ -24,21 +24,18 @@
                 <li><a href="<?=base_url?>info/acerca">Acerca de</a></li>
                 <li><a href="#">Registrate</a></li>
                 <li>
-                    <select class="categoria" id="categoria">
-
+                    <select onChange=cat(this.value) class="categoria" id="categoria">
                         <option selected disabled>Categoria</option>
-
-                        <?php $categorias = Utils::showCategories(); ?>
-                        
+                        <?php $categorias = Utils::showCategories(); ?>                        
                         <?php while($cat = $categorias->fetch_object()): ?>
-                            <option><a href="#"><?=$cat->_cat ?></a></option>
+                            <option value="<?=base_url?>historias/porCategoria&id=<?=$cat->id_cat?>"><?=$cat->_cat ?></option>
                         <?php endwhile; ?> 
 
                     </select>
                 </li>
             </ul>
             <div class="menu-item seleccion">                
-                <select class="perfil" id="perfil">
+                <select onChange=perfil(this.value) class="perfil" id="perfil">
                     <option selected disabled>Perfil</option>
                     <option><a href="#">Editar</a></option>
                     <option><a href="#">Salir</a></option>

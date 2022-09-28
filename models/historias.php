@@ -80,13 +80,13 @@ class Historias {
                     WHERE estado_p = 'Activado'";
 
         if(!empty($cat)) {
-            $sql .= " WHERE id_cat = '$cat'";  //pendiente
+            $sql .= " AND id_cat = '$cat'";  
         }
 
         $sql .=" ORDER BY id_publicacion DESC";
 
         if($limit == true) {
-            $sql .=" LIMIT 2";
+            $sql .=" LIMIT 6";
         }
 
         $publicaciones = $this->db->query($sql);

@@ -65,3 +65,6 @@
     }
     $controlador = new $nombre_controlador();
     $controlador->$action();
+
+
+   

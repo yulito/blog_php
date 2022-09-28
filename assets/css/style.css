@@ -104,25 +104,25 @@ img{
 }
 .publicacion{
     margin: 10px;
-    padding: 10px;
+    padding: 20px 10px 10px 10px;
     
 }
 .publicacion:hover{
     outline:1px solid #000;
     border-radius: 6px;
-    background-color: gray;
+    background-color: rgba(182, 180, 180, 0.767);
     box-shadow: 2px 2px 2px 2px rgb(39, 39, 39);
 }
 .publicacion a{
     color:#000;
 }
-#titulo{    
+#titulo{        
     font-size: 24px;
     color: #8758FF;
     text-shadow: 1px 1px 1px  #000;
 }
 #texto{
-    padding-top: 10px;
+    padding-top: 60px;
     text-align: left;
 }
 .section{
