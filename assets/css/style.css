@@ -23,6 +23,10 @@
     list-style: none;
     font-family: 'Roboto',sans-serif;
 }
+.alert_red{
+    color: rgba(255, 0, 0, 0.945);
+    text-shadow: 1px 1px 1px  #000;
+}
 h1,h2{
     font-family: 'Dancing Script', cursive;
 }
@@ -125,6 +129,72 @@ img{
     padding-top: 60px;
     text-align: left;
 }
+
+/* --------------- Formulario registro --------------- */
+.form-registro{
+    padding:2%;
+}
+#registroForm{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+
+    justify-content: center;
+    align-items: initial;
+
+    background-color: #e58c9e;
+    border-radius: 10px;
+}
+
+.item-registro{
+    margin: 20px;
+}
+.item-registro label{
+    display: block;
+    text-align: initial;
+}
+.item-registro input{
+    display: block;
+    width: 70%;
+    min-width: 400px;
+    height: 32px;
+    border-radius: 6px;
+    font-family: 'Roboto',sans-serif;
+}
+.item-registro .aparte{
+    display: flex;
+    gap: 40px;
+    flex-direction: column;
+}
+.area{
+    display: flex;
+    flex-direction: column;
+}
+#sexo{
+    width: 200px;
+    height: 32px;
+    border-radius: 6px;
+}
+#edad{
+    display: inline-block;
+    width: 60px;
+    min-width: 50px !important;
+}
+.item-registro textarea{
+    width: 60%;
+    height: 160px;
+    border-radius: 6px;
+    text-align: initial;
+}
+.btn{
+    align-self: center;
+    width: 100px;
+    height: 32px;
+    background-color: rgba(32, 232, 32, 0.726);
+    border-radius: 10px;
+}
+/* --------------------------------------------------- */
 .section{
     padding: 10px;
 

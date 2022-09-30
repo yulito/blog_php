@@ -22,7 +22,6 @@
             <ul class="menu-item">
                 <li><a href="<?=base_url?>">Inicio</a></li>
                 <li><a href="<?=base_url?>info/acerca">Acerca de</a></li>
-                <li><a href="#">Registrate</a></li>
                 <li>
                     <select onChange=cat(this.value) class="categoria" id="categoria">
                         <option selected disabled>Categoria</option>
@@ -33,14 +32,17 @@
 
                     </select>
                 </li>
+                <li><a href="<?=base_url?>usuario/registro">Registrate</a></li>
             </ul>
+
             <div class="menu-item seleccion">                
                 <select onChange=perfil(this.value) class="perfil" id="perfil">
                     <option selected disabled>Perfil</option>
-                    <option><a href="#">Editar</a></option>
-                    <option><a href="#">Salir</a></option>
+                    <option><a href="#">Cuenta</a></option>
+                    <option><a href="#">Cerrar Sesión</a></option>
                 </select>
             </div>
+
         </nav>
 
     </header>
