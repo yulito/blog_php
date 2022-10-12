@@ -10,5 +10,20 @@ class Utils {
 		return $categorias;
     }
 
+    public static function deleteSession($session) {
+        if(isset($session)) {
+            $_SESSION[$session] = null;
+            unset($_SESSION[$session]);
+        }
+        return $session;
+    }
 
+    public static function mostrarUsuario($id){
+        require_once 'models/usuario.php';
+        $usuario = new Usuario();
+        $perfil = $usuario->getOne($id);  
+        return $perfil;      
+    }
+
+    
 }

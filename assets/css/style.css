@@ -23,17 +23,65 @@
     list-style: none;
     font-family: 'Roboto',sans-serif;
 }
+.basura{
+    height: 40px;
+    width: 40px;
+}
+.alert_green{
+    color: rgba(51, 255, 0, 0.945);
+    text-shadow: 1px 1px 1px  #000;
+}
 .alert_red{
     color: rgba(255, 0, 0, 0.945);
     text-shadow: 1px 1px 1px  #000;
 }
-h1,h2{
+.alterna{
+    color: rgba(0, 98, 255, 0.945);
+    text-shadow: 1px 1px 1px  #000;
+}
+.usuarioTitulo{
+    color: #73c3e8;;
+    text-shadow: 1px 1px 1px  #000;
     font-family: 'Dancing Script', cursive;
+}
+h1,h2,.item-titulo{
+    font-family: 'Dancing Script', cursive;
+}
+.item-titulo{
+    font-weight: 600;
 }
 img{
     height: 200px;
     width: 460;
     margin-left: 22%;
+}
+#img{
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    margin-left: 4%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.agregarCat{
+    margin: 20px;
+}
+table{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+
+    justify-content: center;
+    align-items: center;
+}
+
+table td, table th {
+border: 1px solid #000000;
+border-color: inherit;
+padding: 6px;
+}
+table th {
+background-color: rgb(243, 127, 106);
 }
 /* ----------------------- GRID ÁREA ------------------------- */
 .header{
@@ -53,7 +101,7 @@ img{
     border-radius: 6px;
     box-shadow: 2px 2px 2px 2px rgb(39, 39, 39);
 
-    font-size: 20px;    
+    font-size: 20px;   
 }
 .menu-item li{
     display: inline-block;
@@ -147,6 +195,19 @@ img{
     border-radius: 10px;
 }
 
+#passwordNew, #btnPass{
+    justify-self: center;
+    align-self: center;
+    width: 60%;
+    min-width: 300px;
+    height: 32px;
+    border-radius: 6px;
+}
+.nota{
+    color: #8758FF;
+    text-shadow: 1px 1px 1px  rgb(39, 39, 39);
+
+}
 .item-registro{
     margin: 20px;
 }
@@ -171,6 +232,26 @@ img{
     display: flex;
     flex-direction: column;
 }
+
+.item-registro #historia{
+    width: 90%;
+    height: 180px;
+    border-radius: 6px;
+    text-align: initial;
+}
+
+.categoria{
+    margin-left: 4%;
+    margin-bottom: 20px;
+    width: 200px;
+    height: 32px;
+    border-radius: 6px;
+}
+
+.item-registro #estado{
+    margin-left: -24%;
+}
+
 #sexo{
     width: 200px;
     height: 32px;
@@ -183,7 +264,7 @@ img{
 }
 .item-registro textarea{
     width: 60%;
-    height: 160px;
+    height: 120px;
     border-radius: 6px;
     text-align: initial;
 }

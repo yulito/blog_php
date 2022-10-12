@@ -1,3 +1,4 @@
+<?php Utils::deleteSession('error_login'); ?>
 <h1>ACERCA</h1>
 <hr><br>
 <p>

@@ -1,10 +1,14 @@
+<?php Utils::deleteSession('error_login'); ?>
 <h2>Formulario de registro</h2>
-<hr><br>
+<hr><br> 
 <?php if(isset($_SESSION['error']['insertar'])): ?>
     <strong class="alert_red"><?=$_SESSION['error']['insertar']; ?></strong>
 <?php elseif(isset($_SESSION['error']['registro']) ): ?>
     <strong class="alert_red"><?=$_SESSION['error']['registro']; ?></strong>
+<?php elseif(isset($_SESSION['ejecucion']['guardar']) ): ?>
+    <strong class="alert_green"><?=$_SESSION['ejecucion']['guardar']; ?></strong>
 <?php endif; ?>
+<?php Utils::deleteSession('ejecucion'); ?>
 
 <div class="form-registro">
     <form id="registroForm" action="<?=base_url?>usuario/guardar" method="post" enctype="multipart/form-data">
@@ -14,7 +18,7 @@
       </div>
       <div class="item-registro area">
         <label for="descripcion">Has una descripción tuya de manera breve</label>
-        <textarea name="descripcion" id="descripcion" ></textarea>
+        <textarea name="descripcion" id="descripcion" style="padding:20px"></textarea>
       </div>
       <div class="item-registro">
         <?php if(isset($_SESSION['error']['edad'])) :?>
@@ -55,4 +59,4 @@
         <input type="submit" class="btn" value="Guardar">
     </form>
 </div>
-
+<?php Utils::deleteSession('error'); ?>

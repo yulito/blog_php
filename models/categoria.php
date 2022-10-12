@@ -35,5 +35,27 @@ class Categoria{
 		return $categoria->fetch_object();
 	}
 
+	public function delete($id) {
+		$sql1 = "DELETE FROM publicacion WHERE id_cat = '$id'";
+		$sql2 = "DELETE FROM categoria WHERE id_cat = '$id'";
 
+		$publicacion = $this->db->query($sql1);
+		$cat = $this->db->query($sql2);
+
+		if($cat){
+			$result = true;
+		}
+		return $result;
+	}
+
+	public function add(){
+		$sql = "INSERT INTO categoria VALUES(NULL, '{$this->getNomCat()}');";
+
+		$cat = $this->db->query($sql);
+
+		if($cat){
+			$result = true;
+		}
+		return $result;
+	}
 }

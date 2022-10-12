@@ -32,19 +32,24 @@
 
                     </select>
                 </li>
-                <li><a href="<?=base_url?>usuario/registro">Registrate</a></li>
+                <?php if(!isset($_SESSION['usuario'])): ?>
+                    <li><a href="<?=base_url?>usuario/registro">Registrate</a></li>
+                <?php endif; ?>
             </ul>
-
+            
+            <?php if(isset($_SESSION['usuario'])): ?>
             <div class="menu-item seleccion">                
                 <select onChange=perfil(this.value) class="perfil" id="perfil">
-                    <option selected disabled>Perfil</option>
-                    <option><a href="#">Cuenta</a></option>
-                    <option><a href="#">Cerrar Sesión</a></option>
+                    <option selected disabled><?=$_SESSION['usuario']->_usuario ?></option>
+                    <option value="<?=base_url?>usuario/cuenta&id=<?= $_SESSION['usuario']->id_usuario;?>">Cuenta</option>
+                    <option value="<?=base_url?>usuario/seguridad">Seguridad</option>
+                    <option value="<?=base_url?>usuario/logout">Cerrar Sesión</option>
                 </select>
             </div>
-
+            <?php endif; ?>
         </nav>
 
     </header>
     <!--------------------------------------------------------------->
     <main class="main">
+   

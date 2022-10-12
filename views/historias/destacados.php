@@ -1,3 +1,4 @@
+
 <h2>Historias destacadas</h2>
 <br>
 <?php while($htrs = $historias->fetch_object()): ?>   
