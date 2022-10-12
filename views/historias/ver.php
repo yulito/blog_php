@@ -1,7 +1,3 @@
-<?php if(isset($_SESSION['error']['delete'])): ?>
-    <strong class="alert_red"><?=$_SESSION['error']['delete']; ?></strong>
-<?php endif; ?>
-<?php Utils::deleteSession('error'); ?>
 
 <?php if(isset($htr)): ?>
    
@@ -19,18 +15,32 @@
             <br>   
         </div>
         <br><hr>
-        <?php if(isset($_SESSION['usuario'])): ?>
+        <!------------------------------- para el like ----------------------------------------->
+        <?php if(isset($_SESSION['usuario']) && $_SESSION['usuario']->id_usuario != $htr->id_usuario): ?>
+            <?php  $like = Utils::favorito($_SESSION['usuario']->id_usuario, $htr->id_publicacion); 
+                    $gusta = $like->fetch_object();
+            ?>
+            <label for=""><strong>Favorito:</strong> <span class="alterna"><?= isset($gusta->id_like) ? 'Guardado' : '--'?></span></label>
+            <div>
+                <?php if(!isset($gusta->id_like)): ?>
+                    <a href="<?=base_url ?>historias/likes&id=<?= $htr->id_publicacion?>&usuario=<?= $_SESSION['usuario']->id_usuario?>"> Like </a>
+                <?php else: ?>
+                    <a href="<?=base_url ?>historias/dislike&id=<?= $gusta->id_like?>"> Quitar </a>
+                <?php endif; ?>
+            </div>
+        <?php endif; ?>
+        <!-------------------------------------------------------------------------------------->
+        <br>
+        <?php if(isset($_SESSION['usuario']) && $_SESSION['usuario']->id_usuario == $htr->id_usuario || isset($_SESSION['admin'])): ?>
 
-            <?php if($_SESSION['usuario']->id_usuario == $htr->id_usuario || isset($_SESSION['admin'])): ?>
-                <label for="">Estado: <strong><?= $htr->estado_p?></strong></label>
-                <div>
-                    <a href="<?=base_url ?>historias/cambiarEstado&id=<?= $htr->id_publicacion?>&estado=<?= $htr->estado_p?>">Cambiar Estado</a>
-                </div>
-                <label for="">Eliminar Historia: </label>
-                <div>
-                    <a href="<?=base_url ?>historias/eliminarHistoria&id=<?= $htr->id_publicacion?>">Eliminar</a>
-                </div>
-            <?php endif; ?>
+            <label for=""><strong>Estado:</strong> <span class="alterna"><?= $htr->estado_p?></span></label>
+            <div>
+                <a href="<?=base_url ?>historias/cambiarEstado&id=<?= $htr->id_publicacion?>&estado=<?= $htr->estado_p?>">Cambiar Estado</a>
+            </div>
+            <label for=""><strong>Eliminar Historia:</strong> </label>
+            <div>
+                <a href="<?=base_url ?>historias/eliminarHistoria&id=<?= $htr->id_publicacion?>">Eliminar</a>
+            </div>
         <?php endif; ?>
     
 <?php else: ?>

@@ -168,10 +168,12 @@ class Historias {
     //-----------------------------------------------------------------------------------------
 
     public function delete($id) {
-        
-        $sql = "DELETE FROM publicacion WHERE id_publicacion = '$id'";
+        //La siguiente ejecución se puede mejorar agregando validaciones por cada query realizada
+        $sql1 = "DELETE FROM likes WHERE id_publicacion = '$id'";
+        $sql2 = "DELETE FROM publicacion WHERE id_publicacion = '$id'";
 
-        $publicacion = $this->db->query($sql);
+        $laik = $this->db->query($sql1);
+        $publicacion = $this->db->query($sql2);
 
         if($publicacion){
             $result = true;

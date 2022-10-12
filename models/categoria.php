@@ -36,11 +36,21 @@ class Categoria{
 	}
 
 	public function delete($id) {
-		$sql1 = "DELETE FROM publicacion WHERE id_cat = '$id'";
-		$sql2 = "DELETE FROM categoria WHERE id_cat = '$id'";
+		
+		// para eliminar en cascada de una tabla que influye al resto (categoria) eliminamos con un ciclo (porque arroja varios registros en una sola consulta)
+		// la tabla que es menos directa, hasta la que tiene una relación mas directa, finalizando con la tabla raiz (categoria).		
+		$sql = "SELECT id_publicacion FROM publicacion WHERE id_cat = '$id'";
+		$cursor = $this->db->query($sql);
+		while($lista = $cursor->fetch_object()){
+			$sql1 = "DELETE FROM likes WHERE id_publicacion = '$lista->id_publicacion'";
+			$ciclo = $this->db->query($sql1);
+		}
+		//------------------
+		$sql2 = "DELETE FROM publicacion WHERE id_cat = '$id'";
+		$sql3 = "DELETE FROM categoria WHERE id_cat = '$id'";
 
-		$publicacion = $this->db->query($sql1);
-		$cat = $this->db->query($sql2);
+		$publicacion = $this->db->query($sql2);
+		$cat = $this->db->query($sql3);
 
 		if($cat){
 			$result = true;

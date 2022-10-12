@@ -2,7 +2,6 @@
 
 class Utils {
 
-    //Aquí solo devolveremos los valores de categoria y no una vista que los liste (eso lo hace el controlador)
     public static function showCategories(){        
         require_once 'models/categoria.php';
 		$categoria = new Categoria();
@@ -23,7 +22,16 @@ class Utils {
         $usuario = new Usuario();
         $perfil = $usuario->getOne($id);  
         return $perfil;      
-    }
+    }    
 
-    
+    public static function favorito($usuario, $id) {
+        require_once 'models/likes.php';
+        $likes = new Likes();
+        $likes->setIdUser($usuario);
+        $likes->setIdHtr($id);
+        
+        $like = $likes->getOne();
+
+        return $like;
+    }
 }

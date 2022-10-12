@@ -18,3 +18,4 @@
     </div>
     <hr><br>
 <?php endwhile; ?>
+<!----------------------- Falta añadir una paginación -------------------->

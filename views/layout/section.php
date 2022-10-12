@@ -26,7 +26,7 @@
             <input id="btn-login" type="submit" value="Enviar">
         </form>
         <br>
-        <a href="#">recuperar contraseña</a>
+        <!--<a href="#">recuperar contraseña</a>-->
     </div>
 
 <?php endif; ?>
@@ -47,7 +47,7 @@
             <hr><br>
             <li><a href="<?=base_url?>historias/agregar">Nueva Historia</a></li>
             <li><a href="<?=base_url?>historias/misHistorias">Mis historias</a></li>
-            <li><a href="<?=base_url?>">Favoritos</a></li>
+            <li><a href="<?=base_url?>historias/favoritos">Favoritos</a></li>
             <!-- <li><a href="#">Usuarios agregados</a></li> -->
         <?php endif; ?> 
     </ul>

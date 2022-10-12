@@ -1,6 +1,7 @@
 <?php
 require_once 'models/historias.php';
 require_once 'models/categoria.php';
+require_once 'models/likes.php';
 
 class historiasController{
 
@@ -142,8 +143,58 @@ class historiasController{
                 header("Location:".base_url);
             }else{
                 $_SESSION['error']['delete'] = 'Fallo al eliminar la historia.'; 
-                require_once "views/historias/ver.php";                       
+                //require_once "views/historias/ver.php";
+                require_once 'views/error/errorweb.php';
             }
+        }
+    }
+    // ---------------------------------------------------------------------------------
+    public function likes() {
+        if(isset($_GET['id']) && isset($_GET['usuario'])) {
+            $id = $_GET['id'];
+            $user = $_GET['usuario'];
+            
+            $likes = new Likes();
+            $likes->setIdUser($user);
+            $likes->setIdHtr($id);
+
+            $likes->htrLikes();
+            
+            if($likes == true){
+                
+                header("Location:".base_url."historias/favoritos");
+            }else{
+                require_once 'views/error/errorweb.php';
+            }        
+        }
+            
+    }
+
+    public function dislike() {
+        if(isset($_GET['id']) ) {
+            $id = $_GET['id'];
+            
+            $likes = new Likes();
+            $likes->setIdLike($id);
+            $like = $likes->htrDisLike();
+            
+            if($like == true){
+                //$_SESSION['guardar']['likes'] = 'Acción ejecutada correctamente!!.';
+                header("Location:".base_url."historias/favoritos");
+            }else{
+                require_once 'views/error/errorweb.php';
+            }        
+        }
+        //require_once "views/historias/ver.php";     
+    }
+
+    public function favoritos() {
+        if(isset($_SESSION['usuario'])){
+            $like = new Likes();
+            $likes = $like->getAll();            
+            require_once 'views/historias/favoritos.php';
+        }else{
+            header("Location: ".base_url);
         }
     }
 }

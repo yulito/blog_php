@@ -35,7 +35,7 @@ class categoriaController {
     }
 
     //---------------------------------------------------------
-    public function eliminarCat() { //fantasia, ficcion y humor... chistes, erotico
+    public function eliminarCat() { 
         if(isset($_GET['id'])) {
             $id = $_GET['id'];
 
