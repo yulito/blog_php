@@ -213,14 +213,26 @@ class Usuario {
     
     //---------------------------------------------------------------------------
     public function delete($id){
+        $result = null;
+        //Aquí también tenemos que eliminar los likes, OJOOOOO o modifico la tabla en mysql para eliminar en cascada
+        $sql = "SELECT id_publicacion FROM publicacion WHERE id_usuario = '$id';";
+        $cursor = $this->db->query($sql);
+		while($lista = $cursor->fetch_object()){
+			$sqlp = "DELETE FROM likes WHERE id_publicacion = '$lista->id_publicacion'";
+			$ciclo = $this->db->query($sqlp);
+		}
+		//------------------
+        //También debemos eliminar los likes que hizo el usuario:
+        $sqlu = "DELETE FROM likes WHERE id_usuario = '$id'";
         $sql1 = "DELETE FROM publicacion WHERE id_usuario = '$id';";
         $sql2 = "DELETE FROM sesion WHERE id_usuario = '$id';";
         $sql3 = "DELETE FROM usuario WHERE id_usuario = '$id';";
 
+        $ulike = $this->db->query($sqlu);
         $publicacion = $this->db->query($sql1);
         $sesion = $this->db->query($sql2);
         $usuario = $this->db->query($sql3);
-
+        
         if($usuario){
             $result = true;
         }

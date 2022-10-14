@@ -46,7 +46,7 @@ class Likes{
                     p.id_publicacion as id
                     FROM likes l INNER JOIN publicacion p ON(l.id_publicacion = p.id_publicacion)
                                 INNER JOIN usuario u ON(u.id_usuario = p.id_usuario)
-                                WHERE l.id_usuario = '$usuario' AND p.estado_p = 'Activado';";
+                                WHERE l.id_usuario = '$usuario' AND p.estado_p = 'Activado' AND u.estado = 'Activado';";
         $query = $this->db->query($sql);
         $result = false;
 		if($query){
